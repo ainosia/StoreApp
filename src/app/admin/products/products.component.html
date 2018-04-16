@@ -1,0 +1,48 @@
+<div class="btn-wrapper">
+  <button class="mt-2" mat-raised-button color="accent" (click)="addProduct()">
+    <i class="material-icons">playlist_add</i> Añadir producto
+  </button>
+</div>
+
+<mat-form-field>
+  <mat-label><i class="material-icons">&#xE880;</i> Filtrar productos</mat-label>
+  <input matInput (keyup)="applyFilter($event.target.value)" />
+</mat-form-field>
+
+<mat-table #table [dataSource]="dataSource" matSort [trackBy]="trackById" class="animate">
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+    <mat-cell color="primary" *matCellDef="let product"> {{ product.name }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Precio</mat-header-cell>
+    <mat-cell *matCellDef="let product"> {{ product.price }} € </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</mat-header-cell>
+    <mat-cell *matCellDef="let product"> {{ product.description }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let product">
+      <button mat-icon-button color="primary" (click)="openDialog(product)" title="Editar"><i class="material-icons">edit</i></button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let product">
+      <div *ngIf="auth.user | async as user">
+        <button mat-icon-button *ngIf="user.role === 'admin'" color="warn" (click)="remove(product)" title="Eliminar"><i class="material-icons">delete</i></button>
+        <button *ngIf="user.role === 'editor'" mat-icon-button [disabled]="user.role !== 'admin'" color="warn" title="No tienes permisos"><i class="material-icons">delete</i></button>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" class="animate"></mat-row>
+</mat-table>

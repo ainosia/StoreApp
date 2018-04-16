@@ -1,0 +1,31 @@
+<div class="container_max">
+  <mat-form-field>
+    <mat-label><i class="material-icons">&#xE880;</i> Filtrar productos</mat-label>
+    <input matInput (keyup)="applyFilter($event.target.value)" />
+  </mat-form-field>
+
+  <mat-table #table [dataSource]="dataSource" matSort [trackBy]="trackById" class="animate">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+      <mat-cell color="primary" *matCellDef="let order"> {{ order.id }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="created_at">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{ order.created_at }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Importe pedido </mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{ order.amount }}€ </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="totalProducts">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Número de productos </mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{ order.totalProducts }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" class="animate"></mat-row>
+  </mat-table>
+</div>

@@ -1,0 +1,47 @@
+<div class="container_max">
+  <h1>Cesta de la compra</h1>
+  <table *ngIf="cart && cart.products.length" class="table_cart">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio unitario</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio total</th>
+        <th scope="col" class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of cart.products">
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }} €</td>
+        <td><input #qty [value]="product.qty" /></td>
+        <td>{{ (product.price * product.qty).toFixed(2) }} €</td>
+        <td>
+          <button mat-button color="accent" (click)="update(product, qty)">
+            <i class="material-icons">update</i> <span class="btn_small">Actualizar</span>
+          </button>
+          <button mat-button color="warn" (click)="remove(product)">
+            <i class="material-icons">delete</i> <span class="btn_small">Eliminar</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="totalPrice">
+    <div class="total_cart"><span>Compra total:</span> {{ totalPrice }} €</div>
+
+    <div class="btn_cart">
+      <button [disabled]="!totalPrice" color="warn" mat-raised-button class="full-width" (click)="processOrder()">
+        <i class="material-icons">done</i> Finalizar pedido
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="!totalPrice" class="message">
+    <i class="material-icons message_cart">remove_shopping_cart</i> La cesta está vacía
+    <button mat-raised-button color="warn" routerLink="/tienda">
+      <i class="material-icons">keyboard_return</i> Volver a la tienda
+    </button>
+  </div>
+</div>

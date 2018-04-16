@@ -1,0 +1,31 @@
+<mat-grid-list cols="3" rowHeight="1:1" class="mt-2">
+  <mat-grid-tile *ngFor="let product of products | async" [colspan]="1">
+    <mat-card class="custom_card">
+      <img *ngIf="!product.uploads[0]" mat-card-image src="http://fakeimg.pl/350x250/?text=Sin imagen" />
+      <img *ngIf="product.uploads[0]" mat-card-image [src]="product.uploads[0].url" />
+      <mat-card-title>{{ product.name }}</mat-card-title>
+      <mat-card-content>
+        <p>{{ product.price }} €</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <div *ngIf="auth.user | async as user">
+          <button
+            *ngIf="user.role === 'customer'"
+            (click)="addProduct(product)"
+            mat-raised-button
+            color="warn"
+          >
+            <i class="material-icons">add_shopping_cart</i> Añadir a la cesta
+          </button>
+          <button
+            routerLink="/producto/{{ product.id }}"
+            mat-raised-button
+            color="accent"
+          >
+            <i class="material-icons">remove_red_eye</i> Ver detalle
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

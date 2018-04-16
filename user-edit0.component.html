@@ -1,0 +1,7 @@
+<app-user-form
+  *ngIf="user"
+  [h1Text]="'Editar usuario'"
+  [user]="user"
+  [submitText]="'Guardar cambios'"
+  (onSubmit)="update($event)">
+</app-user-form>

@@ -1,0 +1,74 @@
+<div *ngIf="auth.user | async; then authenticated else guest">
+</div>
+
+<ng-template #authenticated>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row *ngIf="auth.user | async as user">
+      <a
+        *ngIf="user.role === 'customer'"
+        routerLinkActive="active"
+        routerLink="/pedidos"
+        [routerLinkActiveOptions]="{exact:true}"
+      >
+        <i class="material-icons">speaker_notes</i> Pedidos
+      </a>
+      <a
+        *ngIf="user.role === 'admin' || user.role === 'editor'"
+        routerLinkActive="active"
+        routerLink="/admin"
+        [routerLinkActiveOptions]="{exact:true}"
+      >
+        <i class="material-icons">supervisor_account</i> Administración
+      </a>
+      <a
+        routerLinkActive="active"
+        routerLink="/tienda"
+        [routerLinkActiveOptions]="{exact:true}"
+      >
+        <i class="material-icons">store</i> Tienda
+      </a>
+      <a
+        class="cart"
+        *ngIf="user.role === 'customer'"
+        routerLinkActive="active"
+        routerLink="/cesta"
+        [routerLinkActiveOptions]="{exact:true}"
+      >
+        <i class="material-icons">shopping_cart</i><span class="cart_number">{{ cart?.totalProducts }}</span>
+      </a>
+      <a
+        (click)="auth.signOut()"
+      >
+        <i class="material-icons">exit_to_app</i> Salir
+      </a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</ng-template>
+
+<ng-template #guest>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <a
+        routerLinkActive="active"
+        routerLink="/tienda"
+        [routerLinkActiveOptions]="{exact:true}"
+      >
+        <i class="material-icons">store</i> Tienda
+      </a>
+      <a
+        routerLinkActive="active"
+        routerLink="/login"
+        [routerLinkActiveOptions]="{exact:true}"
+      >
+        <i class="material-icons">input</i> Login
+      </a>
+      <a
+        routerLinkActive="active"
+        routerLink="/registro"
+        [routerLinkActiveOptions]="{exact:true}"
+      >
+        <i class="material-icons">person_add</i> Registro
+      </a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</ng-template>

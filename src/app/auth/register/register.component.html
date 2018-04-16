@@ -1,0 +1,6 @@
+<mat-card>
+  <mat-toolbar class="title"><h1>Formulario de registro</h1></mat-toolbar>
+  <mat-card-content>
+    <app-auth-form (onSubmit)="signUp($event)" [btnText]="'Regístrate &rarr;'"></app-auth-form>
+  </mat-card-content>
+</mat-card>

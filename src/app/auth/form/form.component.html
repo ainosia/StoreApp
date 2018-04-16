@@ -1,0 +1,45 @@
+<form class="animated fadeIn">
+    <mat-form-field>
+      <input
+        matInput
+        #email
+        placeholder="Email"
+        [formControl]="emailFormControl"
+        [errorStateMatcher]="matcher"
+        autocomplete="off"
+      >
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Introduce un email correcto
+      </mat-error>
+
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Campo <strong>obligatorio</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        #password
+        placeholder="Password"
+        type="password"
+        [formControl]="passwordFormControl"
+        [errorStateMatcher]="matcher"
+        autocomplete="off"
+      >
+      <mat-error *ngIf="passwordFormControl.hasError('required')">
+        Campo <strong>obligatorio</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="btn-wrapper">
+      <button
+        (click)="submit(email, password)"
+        type="submit"
+        mat-raised-button
+        color="accent"
+      >
+        {{ btnText }}
+      </button>
+    </div>
+</form>

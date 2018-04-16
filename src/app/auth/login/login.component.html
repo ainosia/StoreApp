@@ -1,0 +1,12 @@
+<mat-grid-list cols="1" rowHeight="60px" class="mb-2">
+  <mat-grid-tile>
+    <button (click)="auth.googleLogin()" mat-raised-button color="warn">Entrar con Google</button>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-card>
+  <mat-toolbar class="title"><h1>Iniciar sesión</h1></mat-toolbar>
+  <mat-card-content>
+    <app-auth-form (onSubmit)="login($event)" [btnText]="'Entra &rarr;'"></app-auth-form>
+  </mat-card-content>
+</mat-card>

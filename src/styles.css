@@ -1,1 +1,288 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.container { padding: 2rem 1rem 3rem; }
+
+.container_max {
+  max-width: 70rem;
+  margin: auto;
+}
+
+.container_max80 {
+  max-width: 80rem;
+  margin: auto;
+}
+
+.upload_content { margin: 10% 0; }
+
+.tile_block figure {
+  text-align: center;
+}
+
+.tile_block img {
+  width: 180px;
+  height: auto;
+}
+
+.title { margin-bottom: 1.5rem !important; }
+
+.mb-2 { margin-bottom: 2rem; }
+
+.mt-2 { margin-top: 2rem !important; }
+
+.mat-tab-label { background-color: transparent !important; }
+
+.cart { position: relative; }
+
+.cart_number {
+	font-size: 14px;
+  font-weight: bold;
+	background-color: #9c27b0;
+	color: white;
+	position: absolute;
+	line-height: 1;
+	top: 10px;
+	padding: 0.2rem 0.4rem;
+	border-radius: 20px;
+}
+
+.message {
+  background-color: #eceff1;
+  max-width: 40rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #666;
+  padding: 2rem 2rem 1rem;
+  text-align: center;
+  margin: 2rem auto auto;
+  border-radius: 10px;
+}
+
+.message_cart {
+  font-size: 3rem;
+  display: block;
+  color: #b0bec5;
+  margin-bottom: 0.5rem;
+}
+
+.message button {
+  display: block;
+  margin: 2rem auto 1rem;
+}
+
+
+/* Texto */
+h1 {
+  color: #e91e63 !important;
+  font-weight: 300 !important;
+  margin: auto !important;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+/* Menú */
+mat-toolbar-row a {
+  color: white;
+  font-weight: 300;
+  text-decoration: none;
+  margin: 0 5px;
+  cursor: pointer;
+  position: relative;
+  padding: 1rem 1.5rem;
+}
+
+mat-toolbar-row a:hover { color: #880E4F; }
+
+mat-toolbar-row .active {
+  background-color: #C2185B;
+  pointer-events: none;
+}
+
+
+
+/* Spinner */
+mat-spinner { margin: 7% auto; }
+
+
+
+/* Formularios */
+mat-card {
+  margin: auto;
+  max-width: 35rem;
+}
+
+mat-card mat-toolbar { text-align: center !important; }
+
+mat-form-field {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+
+
+/* Botones e iconos */
+.btn-wrapper {
+  text-align: right;
+  margin-top: 1rem;
+}
+
+button {
+  font-weight: 300 !important;
+  text-transform: uppercase;
+}
+
+.material-icons {
+  vertical-align: sub;
+}
+
+.input_icon {
+  margin-left: 2rem;
+}
+
+.btn_small {
+  font-size: 0.75rem;
+  text-transform: lowercase;
+}
+
+
+
+/* Tablas */
+.mat-header-cell {
+  font-weight: 400 !important;
+  color: #f4511e !important;
+}
+
+.mat-sort-header-button { text-transform: none; }
+
+.mat-column-name { max-width: 15rem; }
+
+.mat-column-description { max-width: 45rem; }
+
+.mat-column-price { max-width: 5rem; }
+
+.mat-column-edit, .mat-column-delete { max-width: 2.5rem; }
+
+
+
+/* Cards */
+
+.custom_card {
+	text-align: center;
+	margin: 1.5rem;
+	padding: 3rem !important;
+}
+
+.custom_card img {
+  width: 100%;
+  height: auto;
+}
+
+.custom_card p {
+  color: #e91e63;
+  font-size: 1.2rem;
+}
+
+.card_carousel {
+  margin-top: 5rem;
+  max-width: 70rem;
+  text-align: center;
+}
+
+.card_carousel img { width: 100%; }
+
+.card_carousel .mat-card-title { color: #e91e63; }
+
+.card_carousel h2 { color: #f4511e; }
+
+.card_carousel p { font-size: 1rem }
+
+.card_carousel .mat-card-actions {
+  margin-bottom: 1rem !important;
+}
+
+
+
+/* Tabla compra */
+.table_cart {
+  margin: 2rem auto;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  width: 100%;
+}
+
+.table_cart th {
+  color: #e91e63;
+  font-weight: 300;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+}
+
+.table_cart td {
+  border-top: 1px solid #ccc !important;
+  font-weight: 300;
+  padding: 0.5rem 1rem;
+}
+
+.table_cart td input {
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  background-color: #eceff1;
+  padding: 0.5rem 0 !important;
+}
+
+.total_cart {
+  background-color: #eceff1;
+  color: #e91e63;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 1rem;
+  text-align: right;
+}
+
+.total_cart span {
+  color: #666;
+  font-weight: 300;
+}
+
+.btn_cart {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+
+
+/* Animaciones */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fast {
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
